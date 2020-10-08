@@ -12,7 +12,16 @@ services:
         stop_grace_period: 1m30s
         volumes:
             - "/var/run/docker.sock:/var/run/docker.sock"
-
+        networks:
+            - backend
+        depends_on:
+            - db
+        deploy:
+          replicas: 10
+          update_config:
+            parallelism: 2
+          restart_policy:
+           condition: on-failure
 
 networks:
   backend:
