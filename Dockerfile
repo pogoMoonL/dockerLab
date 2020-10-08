@@ -1,12 +1,9 @@
-FROM node:12.18.1
-ENV NODE_ENV=production
+FROM node:11.1.0-alpine
 
-WORKDIR /app
-
-COPY ["package.json", "package-lock.json*", "./"]
-
-RUN npm install
+WORKDIR /home/node
 
 COPY . .
 
-CMD [ "node", "server.js" ]
+RUN npm install
+
+CMD npm start

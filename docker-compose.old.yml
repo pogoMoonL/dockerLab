@@ -7,3 +7,7 @@ services:
       dockerfile: Dockerfile
     ports:
       - "3000:8000"
+  visualizer:
+    image: dockersamples/visualizer:stable
+    ports:
+      - "8080:8080"

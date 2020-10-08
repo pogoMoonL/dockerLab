@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+    web:
+        image: sef1548/dockerlab:1.0
+        ports:
+            - 80:3000
+

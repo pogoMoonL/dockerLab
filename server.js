@@ -1,7 +1,12 @@
-const ronin     = require( 'ronin-server' )
-const mocks     = require( 'ronin-mocks' )
+const express = require("express");
+const os = require("os");
 
-const server = ronin.server()
+const app=express();
 
-server.use( '/', mocks.server( server.Router(), false, true ) )
-server.start()
+app.get("/", (req, res) => {
+    res.send("Hello from Swarm " + os.hostname());
+});
+
+app.listen(3000, () => {
+    console.log("Server is running on port 3000");
+});
