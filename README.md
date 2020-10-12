@@ -37,4 +37,3 @@ $ docker rm  $(docker ps -aq)
 ```sh
 $ docker volume prune
 ```
-## Docker File
