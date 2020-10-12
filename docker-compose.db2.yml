@@ -1,0 +1,7 @@
+version: "3"
+services:
+
+  web:
+    image: ibmcom/db2 
+    ports:
+      - 50000:50000 

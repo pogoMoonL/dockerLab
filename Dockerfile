@@ -1,8 +1,9 @@
 FROM node:11.1.0-alpine
 
-WORKDIR /home/node
-
-COPY . .
+ENV PYTHONUNBUFFERED 1
+RUN mkdir /docker_api
+WORKDIR /docker_api
+COPY . /docker_api/
 
 RUN npm install
 
