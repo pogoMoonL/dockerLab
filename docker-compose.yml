@@ -1,33 +1,27 @@
-version: '3'
-
+version: "3"
 services:
-    web:
-        image: sef1548/dockerlab:1.0
-        ports:
-            - 3000:3000
-        deploy:
-          replicas: 1
-          update_config:
-            parallelism: 2
-          restart_policy:
-           condition: on-failure
-    visualizer:
-        image: dockersamples/visualizer:stable
-        ports:
-            - "8080:8080"
-        stop_grace_period: 1m30s
-        volumes:
-            - "/var/run/docker.sock:/var/run/docker.sock"
-        networks:
-            - backend
-        depends_on:
-            - db
-       
 
-networks:
+  web:
+    image: sef1548/dockerlab:1.0
+    ports:
+      - 3000:3000
+    deploy:
+      replicas: 1
+  visualizer:
+    image: dockersamples/visualizer:stable
+    ports:
+      - "8080:8080"
+    stop_grace_period: 1m30s
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    deploy:
+      placement:
+        constraints: [node.role == manager]
+
+networks:  
   backend:
 
 volumes:
   db-data:
-  # api-data
+  # api-data:
 
